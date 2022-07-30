@@ -27,7 +27,6 @@ public class VendedorController {
     @GetMapping
     public ResponseEntity<List<Vendedor>> listar() {
         var vendedores = vendedorService.listar();
-
         return ResponseEntity.ok(vendedores);
     }
 

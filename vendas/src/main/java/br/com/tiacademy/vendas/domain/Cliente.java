@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Vendedor {
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +29,12 @@ public class Vendedor {
         this.nome = nome;
     }
 
-    public Vendedor(Long id, String nome) {
+    public Cliente(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public Vendedor() {
+    public Cliente() {
     }
+
 }
