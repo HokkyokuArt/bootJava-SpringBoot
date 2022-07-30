@@ -1,6 +1,7 @@
 package br.com.tiacademy.vendas.service;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,28 @@ public class VendedorService {
 
     public Vendedor porId(Long id){
         return vendedorRepository.findById(id).orElse(null);
+    }
+
+    public Vendedor criar(Vendedor vendedor){
+        return vendedorRepository.save(vendedor);
+    }
+
+    public Vendedor editar(Long id, Vendedor editado) {
+        var recuperado = porId(id);
+
+        if(Objects.isNull(recuperado)){
+            throw new RuntimeException("não foi encontrado");
+        }
+
+        recuperado.setNome(editado.getNome());
+
+        return vendedorRepository.save(recuperado);
+        
+    }
+
+    public void excluir(Long id) {
+        vendedorRepository.deleteById(id);
+        
     }
     
 }
