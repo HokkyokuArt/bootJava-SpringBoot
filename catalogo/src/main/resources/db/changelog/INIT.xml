@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                     https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.12.xsd">
+
+
     <changeSet id="1" author="jean">
-        <preConditions onFail="MARK_RAN" onFailMessage="tabela artista ja existe">
-            <not>
-                <tableExists tableName="artista" />
-            </not>
-        </preConditions>
-
-        <createTable tableName="artista">
-            <column name="id" type="int">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_artista" />
-            </column>
-            <column name="nome" type="${descricao}">
-                <constraints nullable="false" unique="true"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="2" author="jean">
         <preConditions onFail="MARK_RAN" onFailMessage="tabela gravadora ja existe">
             <not>
                 <tableExists tableName="gravadora" />
@@ -30,11 +15,34 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_gravadora" />
             </column>
             <column name="nome" type="${descricao}">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false" unique="true" />
             </column>
-            <column name="ano" type="int"/>
-            <column name="cidade" type="${descricao}"/>
-            <column name="uf" type="${descricao}"/>
+            <column name="ano" type="int" />
+            <column name="cidade" type="${descricao}" />
+            <column name="uf" type="${descricao}" />
         </createTable>
     </changeSet>
+
+    
+    <changeSet id="2" author="jean">
+        <preConditions onFail="MARK_RAN" onFailMessage="tabela artista ja existe">
+            <not>
+                <tableExists tableName="artista" />
+            </not>
+        </preConditions>
+
+        <createTable tableName="artista">
+            <column name="id" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_artista" />
+            </column>
+            <column name="nome" type="${descricao}">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="gravadora_id" type="INT">
+                <constraints foreignKeyName="fk_artista_gravadora" referencedTableName="gravadora" referencedColumnNames="id" />
+            </column>
+        </createTable>
+    </changeSet>
+
+
 </databaseChangeLog>
