@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Cardapio implements CrudDomain<Long>, Serializable{
+public class Preco implements CrudDomain<Long>, Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,7 +20,7 @@ public class Cardapio implements CrudDomain<Long>, Serializable{
     @JoinColumn(name="id_restaurante", referencedColumnName = "id", nullable = false)
     private Restaurante idRestaurante;
     @ManyToOne
-    @JoinColumn(name = "gravadora_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_prato", referencedColumnName = "id", nullable = false)
     private Prato idPrato;
     private BigDecimal valor;
 }
