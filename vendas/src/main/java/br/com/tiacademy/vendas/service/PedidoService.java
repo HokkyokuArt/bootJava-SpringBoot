@@ -10,7 +10,12 @@ public class PedidoService extends CrudService<Pedido, Long> {
 
     @Override
     protected Pedido editarEntidade(Pedido recuperado, Pedido entidade) {
-        return null;
+       recuperado.setId(entidade.getId());
+       recuperado.setValor(entidade.getValor());
+       recuperado.setData(entidade.getData());
+       recuperado.setCliente(entidade.getCliente());
+       recuperado.setVendedor(entidade.getVendedor());
+       return recuperado;
     }
 
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="jean">
+        <preConditions onFail="MARK_RAN" onFailMessage="Já existe a tabela PEDIDO">
+            <not>
+                <tableExists tableName="pedido" />
+            </not>
+        </preConditions>
+
+        <createTable tableName="pedido">
+            <column name="ID" type="${numerico}" >
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PEDIDO" />
+            </column>
+            <column name="cliente_id" type="${numerico}">
+                <constraints nullable="false" foreignKeyName="fk_pedido_cliente" referencedTableName="cliente" referencedColumnNames="id" />
+            </column>
+            <column name="vendedor_id" type="${numerico}">
+                <constraints nullable="false" foreignKeyName="fk_pedido_vendedor" referencedTableName="vendedor" referencedColumnNames="id" />
+            </column>
+
+            <column name="data" type="${data}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="valor" type="${monetario}">
+                <constraints nullable="false" />
+            </column>
+
+
+        </createTable>
+        <addAutoIncrement tableName="pedido" columnName="id" columnDataType="int" incrementBy="1" startWith="1" />
+
+    </changeSet>
+
+
+</databaseChangeLog>

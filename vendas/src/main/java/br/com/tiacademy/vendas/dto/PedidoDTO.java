@@ -1,7 +1,22 @@
 package br.com.tiacademy.vendas.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class PedidoDTO implements Serializable {
-
+    private Long id;
+    private LocalDate data;
+    private BigDecimal valor;
+    private Long clienteId;
+    private Long vendedorId;
+    private ClienteDTO cliente;
+    private VendedorDTO vendedor;
 }
