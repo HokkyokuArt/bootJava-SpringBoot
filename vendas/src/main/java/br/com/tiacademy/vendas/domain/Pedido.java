@@ -43,5 +43,5 @@ public class Pedido implements CrudDomain<Long>, Serializable {
 
     @ManyToMany
     @JoinTable(name = "item_pedido", joinColumns = @JoinColumn(name = "pedido_id"), inverseJoinColumns = @JoinColumn(name = "item_id"))
-    private List<ItemPedido> itens = new ArrayList<>();
+    private List<Item> itens = new ArrayList<>();
 }
