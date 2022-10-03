@@ -15,6 +15,8 @@ public class PedidoService extends CrudService<Pedido, Long> {
        recuperado.setData(entidade.getData());
        recuperado.setCliente(entidade.getCliente());
        recuperado.setVendedor(entidade.getVendedor());
+       recuperado.getItens().clear();
+       recuperado.getItens().addAll(entidade.getItens());
        return recuperado;
     }
 

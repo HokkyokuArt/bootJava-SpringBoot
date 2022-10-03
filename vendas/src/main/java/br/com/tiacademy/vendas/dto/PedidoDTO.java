@@ -3,6 +3,8 @@ package br.com.tiacademy.vendas.dto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,4 +21,5 @@ public class PedidoDTO implements Serializable {
     private Long vendedorId;
     private ClienteDTO cliente;
     private VendedorDTO vendedor;
+    private List<ItemDTO> itens = new ArrayList<>();
 }
