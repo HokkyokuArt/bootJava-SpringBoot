@@ -8,7 +8,7 @@
                 <tableExists tableName="servico" />
             </not>
         </preConditions>
-        
+
         <createTable tableName="servico">
             <column name="ID" type="${numerico}">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SERVICO" />
@@ -17,10 +17,11 @@
             <column name="nome" type="${descricao}">
                 <constraints nullable="false" />
             </column>
+            
             <column name="descricao" type="${descricao}" />
 
         </createTable>
-        <addAutoIncrement tableName="pedido" columnName="id" columnDataType="int" incrementBy="1" startWith="1" />
+        <addAutoIncrement tableName="servico" columnName="id" columnDataType="int" incrementBy="1" startWith="1" />
 
     </changeSet>
 
